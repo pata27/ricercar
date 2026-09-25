@@ -1,21 +1,28 @@
-# Session state — 2026-09-23
+# Status — 2026-09-25
 
-Everything is committed on `main` (5 commits). Working tree clean. Nothing lost by reboot.
+## Shipped on `main`
+- Audio engine: bit-perfect ALSA output with lossless container negotiation,
+  hardware pause, gapless, native-rate switching, ReplayGain/preamp, mute,
+  seekable HTTP spooling, ICY titles, clean stop on device loss.
+- Library v2: incremental parallel scan + watcher, FTS5 search, albums /
+  artists / genres / favorites / history / playlists (M3U), cover cache with
+  Cover Art Archive fallback, synced lyrics (.lrc, tags, lrclib).
+- Controller: stable queue ids, shuffle/repeat, session restore, play counts,
+  event bus; scrobbling (ListenBrainz, Last.fm) with offline queues.
+- UPnP: AVTransport + OpenHome renderer on one device, MediaServer with
+  hierarchy/search/range serving, SSDP fixes. MPRIS with Raise/Quit.
+- Desktop app (Slint): full redesign, EN/FR, tray, notifications,
+  single instance, headless snapshot mode for screenshots.
 
-## Done
-- All 5 crates implemented and green: `cargo test --workspace` = 16/16, clippy `-D warnings` clean, fmt clean.
-- Verified end-to-end (under `dbus-run-session`, device `null` only — no sound ever hit hardware):
-  - UPnP MediaRenderer: SSDP, device.xml, SetAVTransportURI→Play→SetNext→gapless switch→STOPPED, GENA, volume
-  - MPRIS: registered `org.mpris.MediaPlayer2.ricercar`, Properties.Get, Play/OpenURI work
-  - daemon + cli + ui binaries run (`ricercar-ui --headless` works; slint UI compiles, not yet smoke-tested on a real display)
+## Next candidates
+- Real-device reports for the control-point matrix (docs/CONTROLS.md).
+- Device capabilities panel (supported rates/containers of the selected DAC).
+- Parametric EQ / convolution (optional, non bit-perfect).
+- DSD (DoP), CUE sheets, multi-disc box sets view, composer/work view for
+  classical.
+- Flatpak / AppImage packaging.
 
-## Pending (next session)
-1. `git push origin main` — LAST ATTEMPT FAILED with HTTP 408 (transient/network). Retry; if it keeps failing check push size (`git count-objects -v`) / try ssh.
-2. `cargo build --release --workspace` — was NOT started (push failed first in the `&&` chain).
-3. Tag + GitHub release `v0.1.0-alpha` via `gh release create` with the release binaries/tarball.
-4. Optional before release: smoke the slint UI on the real desktop; test against BubbleUPnP on the LAN.
-
-## Reminders
-- NEVER test with `hw:` devices — only `null` / `file:` sinks.
-- Repo: https://github.com/pata27/ricercar (public). Strategy doc: /home/antoine/Code/qbz/plan.md
-- No Qobuz code ever; control points push URLs only.
+## Rules
+- Never test with `hw:` devices — only `null` / `file:` sinks.
+- No streaming-service private API code, ever.
+- Builds are capped at 4 jobs (`.cargo/config.toml`, not committed).
