@@ -215,7 +215,7 @@ components:
 
 **Creative North Star: "The Listening Room With the Lid Off"**
 
-ricercar plays the streaming-app canon straight (the finish level of Apple Music, Spotify and the Qobuz desktop client): a near-black ground, covers that carry the colour, and chrome that steps back until it is needed. The one thing it adds to that canon is a readout nobody else ships honestly: the signal path, from file to DAC, with each hop marked untouched or altered. The system is otherwise conventional on purpose. Familiar placement is what lets the one new idea read clearly.
+ricercar is a listening room more than a storefront: a near-black ground, covers that carry the colour, chrome that steps back, and one element always in view that other players hide: the signal path, from file to DAC, with each hop marked untouched or altered. Its vocabulary comes from hi-fi rather than streaming apps: text buttons instead of a big round play disc, a Format column on every track list, a listening header on the home page that shows what plays and how it reaches the DAC, and an artist page laid out like sleeves on a shelf.
 
 Density is calm, not dashboard. Pages sit in a 32px gutter, track rows are 52px, album covers are 176px, and the player bar is a fixed 88px strip. Colour comes from the music: one warm gold accent by default, re-tinted from the playing cover and then pushed to a readable contrast. Green, amber and red are reserved for chain truth and errors. The now-playing view turns the whole window into a dark room over a blurred cover, whatever the app theme.
 
@@ -234,7 +234,7 @@ The visual rejection is confirmed in PRODUCT.md: no skeuomorphic hi-fi costume (
 Near-black neutrals with a single warm accent that the music itself may re-tint, plus three status hues that each mean exactly one thing.
 
 ### Primary
-- **Warm Gold** (accent-gold): the default accent. Primary buttons, the big play button, toggle on-state, the seek bar fill on hover, the active nav icon, the current track title, the favourite heart, selection highlights, the dot under an active round icon button. Seven user choices ship (gold, coral, rose, violet, blue, teal, green); the chosen one and the cover-derived one both pass through `readable_accent` before use.
+- **Warm Gold** (accent-gold): the default accent. Primary buttons, toggle on-state, the seek bar fill on hover, the active nav icon, the current track title, the favourite heart, selection highlights, the dot under an active round icon button. Seven user choices ship (gold, coral, rose, violet, blue, teal, green); the chosen one and the cover-derived one both pass through `readable_accent` before use.
 - **Accent Ink** (on-accent-dark / on-accent-light): text and icons on an accent fill. Near-black on dark, white on light, because the accent is kept light on dark themes and dark on light themes.
 - **Accent Wash** (accent at 16% alpha dark, 14% light): the soft accent tint; album and artist headers use a vertical accent-to-transparent wash (20% dark, 14% light) under the top bar.
 
@@ -273,14 +273,14 @@ Near-black neutrals with a single warm accent that the music itself may re-tint,
 
 ### Hierarchy
 - **Display** (Inter Display 800, 56px, -1.2px): album and playlist hero titles; drops to Headline size when an album title exceeds 40 characters.
-- **Headline** (Inter Display 800, 36px, -0.8px): page titles (Home greeting, Albums, Artists, Tracks, Genres, Favorites, Radio, Settings, Search).
+- **Headline** (Inter Display 800, 36px, -0.8px): page titles (Albums, Artists, Tracks, Genres, Favorites, Radio, Settings, Search).
 - **Headline Small** (Inter Display 700 to 800, 26px): library stats and the now-playing track title.
 - **Title** (Inter 700, 20px): section titles above rows, dialog titles, genre tile names.
 - **Title Small** (Inter 700, 16px): top-bar title once scrolled, empty-state headings.
 - **Body Strong** (Inter 500 to 600, 14px): track, album and player-bar titles; nav items (600 when active, 500 at rest).
 - **Body** (Inter 400 to 600, 13px): buttons (600), inputs, menu lines, album column, toasts, hop values.
 - **Meta** (Inter 400, 12px): artists under titles, secondary meta, column headers, action links.
-- **Label** (Inter 700, 11px, +0.6px): list-group labels (Playlists in the sidebar, Now playing and Next up in the queue) and the quality chip. Sentence case.
+- **Label** (Inter 700, 11px, +0.6px): list-group labels (Playlists in the sidebar, Now playing and Next up in the queue). Sentence case.
 - **Badge** (Inter 700, 10px, +0.4px): HI-RES, format, BIT-PERFECT and SHARED badges. Uppercase text supplied literally.
 
 Synced lyrics are a separate, view-local scale in Inter Display 700 at -0.3px: 30px for other lines, 34px and white for the current line (font size eases over 260ms), 20px when unsynced.
@@ -292,7 +292,7 @@ Synced lyrics are a separate, view-local scale in Inter Display 700 at -0.3px: 3
 
 ## Layout
 
-A fixed desktop frame: a 240px sidebar on the left, a scrolling content area, and a full-width 88px player bar at the bottom. Scrolling pages sit under a 56px top bar (back/forward, title) that is fully transparent at rest and fades to 96% ground over 60px of scroll once past a per-page threshold (40px on list pages, 220 to 250px on album, artist and playlist heroes); its hairline appears only past half fade.
+A fixed desktop frame: a 240px sidebar on the left, a scrolling content area, and a full-width 100px player bar at the bottom. Scrolling pages sit under a 56px top bar (back/forward, title) that is fully transparent at rest and fades to 96% ground over 60px of scroll once past a per-page threshold (40px on list pages, 220 to 250px on album, artist and playlist heroes); its hairline appears only past half fade.
 
 Content uses a 32px horizontal gutter. Album and artist heroes are 280 to 300px tall with a 232px cover and the title block bottom-aligned beside it, 28px apart. Album rows use 176px tiles; artist tiles are 160px circles; genre tiles are 110px tall in a grid. Track tables share one column model: number (28px, right-aligned), optional 38px cover, title (stretch 3) with artist and badge on the line beneath, optional album (stretch 2), optional plays (56px), a 30px action slot, duration (44px), all 16px apart with 16px row padding, so header and rows align.
 
@@ -306,7 +306,6 @@ Depth is tonal first: ground, panel, raised and overlay step up in lightness, wi
 
 ### Shadow Vocabulary
 - **Tile at rest** (blur 8px, y 3px, #00000059): album tiles; deepens to blur 18px, y 8px on hover over 260ms.
-- **Play affordance** (blur 14px, y 4px, #00000066; hover play on tiles blur 10px, #00000080): round accent play buttons.
 - **Hero cover** (blur 30px, y 12px, #00000080): album header cover.
 - **Popover** (blur 24px, y 8 to 10px, #00000080 to #00000099): signal-path popover, context menus.
 - **Toast** (blur 20px, y 6px, #00000099).
@@ -317,7 +316,7 @@ Depth is tonal first: ground, panel, raised and overlay step up in lightness, wi
 
 ## Shapes
 
-Three corner radii and the pill. 4px for small inner things (badges, list-row covers, menu lines); 8px for covers, track rows, nav items and text fields; 12px for panels that float (signal-path popover, dialogs, genre tiles, the now-playing cover). Every action that is a single control is a full pill or circle: buttons, the play buttons, icon buttons, toggles, segmented controls, the quality chip, the toast. Artists are circles, albums are rounded squares. Borders are 1px and translucent; the only thicker stroke is the 2px ring of a signal-path hop.
+Three corner radii and the pill. 4px for small inner things (badges, list-row covers, menu lines); 8px for covers, track rows, nav items and text fields; 12px for panels that float (signal-path popover, dialogs, genre tiles, the now-playing cover). Every action that is a single control is a full pill or circle: buttons, icon buttons, toggles, segmented controls, the signal-path strip, the toast. Artists are circles, albums are rounded squares. Borders are 1px and translucent; the only thicker stroke is the 2px ring of a signal-path hop.
 
 ## Components
 
@@ -327,18 +326,19 @@ Quiet pills; the accent is spent on one action per view.
 - **Primary:** accent fill with accent-ink text at 13px/600; hover brightens 8%, press darkens 15%.
 - **Secondary:** hover-veil fill with a 1px line border; hover goes to the selected veil, press to the press veil.
 - **Danger:** secondary shape with error-red label and icon.
-- **Play button:** 52px accent circle with a filled play glyph at 40% of its size, nudged 3% right; scales 1.05 on hover. The transport play is inverted: a 40px circle in the text colour with a ground-coloured glyph, scaling 1.06.
+- **Action bar:** collection pages (album, artist, playlist) lead with a primary pill **Play / Pause** and a secondary **Shuffle** pill, then favourite, add-to-queue and more as round icon buttons. The only round play control is the transport play in the player bar: a 40px circle in the text colour with a ground-coloured glyph, scaling 1.06.
 - **Icon button:** 32px circle, 18px Lucide line icon in text-secondary, text colour on hover; active state turns the icon accent and adds a 4px accent dot beneath. Disabled icons drop to text-tertiary at half alpha.
 
 ### Chips
-- **Quality chip:** 24px pill on the hover veil (selected veil on hover), a 7px status dot (green bit-perfect, amber altered, tertiary unknown) and the codec and rate in 11px/700. It is the entry to the signal path.
+- **Signal-path strip:** under the seek bar, a 20px pill (hover veil on hover): a 7px status dot (green bit-perfect, amber altered, tertiary unknown), then the hops in 11px separated by 11px chevrons — source in 700 text colour (`FLAC 24/96`), processing in amber when present (`73 %`, `ReplayGain`), output container, device. Clicking it opens the signal-path popover.
+- **Listening header:** the home page opens on a 232px panel (12px corners, blurred cover backdrop under a ground gradient) with a 184px cover, a status line in accent (Now playing / Paused / Pick up where you left off), the title in the 36px headline, artist and album, the chain summary with its status dot, and Play / Open album pills.
 - **Segmented control:** 32px pill track on the hover veil; the selected segment is a raised pill with a 3px shadow. The now-playing tabs are the same shape in white-on-dark literals.
 
 ### Badges
 Small 18px rounded rectangles (4px), 10px/700 uppercase, outlined in their tint at 60% alpha or filled. HI-RES uses hi-res gold (on a translucent black plate when over a cover); format badges in track rows sit on the artist line in text-tertiary; device badges read BIT-PERFECT in green or SHARED in amber.
 
 ### Cards / Containers
-- **Album tile:** 176px cover, 8px corners, tile shadow; title 14px/600 (accent when current), artist 12px text-secondary. A 44px accent play button fades in at bottom right on hover and stays while that album plays.
+- **Album tile:** 176px cover, 8px corners, tile shadow; title 14px/600 (accent when current), artist 12px text-secondary. No hover play control: a click opens the album, a double-click plays it. The album that is playing wears a small on-air chip (the three-bar equaliser on a dark 30×26px tag) at bottom left.
 - **Artist tile:** 160px circle, 12px inset cover, selected-veil halo on hover.
 - **Genre tile:** 110px, 12px corners, golden-angle hue, darkening diagonal, 20px/800 white name, scale 1.02 on hover.
 - **Cover:** raised-colour placeholder with a disc (or artist, radio, music) glyph at 36% size in tertiary; the image fades in over 260ms.
@@ -353,13 +353,13 @@ Small 18px rounded rectangles (4px), 10px/700 uppercase, outlined in their tint 
 - **Nav item:** 36px, 8px corners, 18px icon and 14px label 12px apart. Rest: text-secondary; hover: hover veil, text colour; active: selected veil, 600 weight, accent icon.
 
 ### Track Table
-Rows are 52px with 8px corners and a 90ms hover veil; double-click plays. The number column swaps to a play glyph on hover and to animated three-bar equaliser (accent) for the playing track, whose title turns accent. Header row is 34px in 12px text-tertiary with a clock icon for duration, over a hairline.
+Rows are 52px with 8px corners and a 90ms hover veil; double-click plays. The number column swaps to a play glyph on hover and to animated three-bar equaliser (accent) for the playing track, whose title turns accent. Header row is 34px in 12px text-tertiary with text labels (Title, Album, Plays, Format, Length), over a hairline. A 92px Format column shows codec and resolution (`FLAC 24/96`) in text-tertiary, or in hi-res gold 600 weight when the track is above 16 bit / 48 kHz; album pages omit it because the header already states it.
 
 ### Player Bar
-88px panel strip. Left: 58px cover (6px corners, click opens now playing), title 14px/600, artist 12px, optional origin line in accent, heart. Centre: shuffle, previous, play, next, repeat 10px apart over a seek row (44px times in 11px, 4px track thickening to 6px on hover with a 12px knob, fill in text colour turning accent on hover). Right: quality chip, lyrics, queue, mute and a 96px volume bar whose fill turns amber below 100%.
+100px panel strip. Left: 58px cover (6px corners, click opens now playing), title 14px/600, artist 12px, optional origin line in accent, heart. Centre: shuffle, previous, play, next, repeat 10px apart over a seek row (44px times in 11px, 4px track thickening to 6px on hover with a 12px knob, fill in text colour turning accent on hover). Under the seek row: the signal-path strip. Right: lyrics, queue, mute and a 96px volume bar whose fill turns amber below 100%.
 
 ### Signal Path (signature)
-The honest chain readout. A 330px overlay popover (12px corners, popover shadow, 16px padding) opened from the quality chip, and a full tab in the now-playing view. Header: a 9px status dot and the verdict (Bit-perfect, Altered signal path, or Signal path when unknown). Each hop is a 2px ring (green untouched, amber altered, tertiary unknown) with its label in 11px tertiary and value in 13px text; a 2px spine at 45% alpha in the upper hop's colour joins each ring to the next. A plain-language sentence closes the panel, explaining either why the chain is untouched or what alters it.
+The honest chain readout. A 330px overlay popover (12px corners, popover shadow, 16px padding) opened from the signal-path strip, and a full tab in the now-playing view. Header: a 9px status dot and the verdict (Bit-perfect, Altered signal path, or Signal path when unknown). Each hop is a 2px ring (green untouched, amber altered, tertiary unknown) with its label in 11px tertiary and value in 13px text; a 2px spine at 45% alpha in the upper hop's colour joins each ring to the next. A plain-language sentence closes the panel, explaining either why the chain is untouched or what alters it.
 
 ### Now Playing
 The listening room: listening-room base, the cover as a blurred backdrop at 90%, a horizontal black gradient (70%, 50%, 70%) and an 8% accent wash. Large cover left (12px corners, modal shadow), title, artist and album, and a status dot with the format line. Right: Lyrics, Queue and Signal path tabs. Synced lyrics scroll with a 420ms ease-out; the current line grows and turns white, past lines dim further than upcoming ones.
@@ -384,6 +384,6 @@ The listening room: listening-room base, the cover as a blurred backdrop at 90%,
 - **Don't** use skeuomorphic hi-fi costume (brushed metal, VU meters, LED digits, wood) or dashboard density.
 - **Don't** use green, amber or red for decoration, categories or emphasis.
 - **Don't** place a small label, tag or category line above a page or hero title.
-- **Don't** add shadows to chrome (sidebar, player bar, top bar, rows, pill buttons); the only exceptions are round play buttons and the selected segment's 3px lift.
+- **Don't** add shadows to chrome (sidebar, player bar, top bar, rows, pill buttons); the only exception is the selected segment's 3px lift.
 - **Don't** show a solid top bar at rest; it stays transparent until the page scrolls past its threshold.
 - **Don't** claim bit-perfect when the chain is unknown; unknown is tertiary grey.
